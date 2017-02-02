@@ -1,4 +1,4 @@
-FROM stakater/tomcat7:7.0.55
+FROM stakater/java8-alpine:1.8.0_121
 MAINTAINER Muhammad Hamza Zaib <hamza@aurorasolutions.io>
 
 # Set customizable env vars defaults.
