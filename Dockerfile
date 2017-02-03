@@ -3,6 +3,7 @@ MAINTAINER Muhammad Hamza Zaib <hamza@aurorasolutions.io>
 
 # Set customizable env vars defaults.
 ENV GRAILS_VERSION 3.2.2
+ENV GRADLE_VERSION 3.1
 ENV JAVA_OPTS -Xms256m -Xmx512m
 ENV GRAILS_DEPENDENCY_CACHE_DIR /app/.m2/repository
 
@@ -19,8 +20,17 @@ RUN wget https://github.com/grails/grails-core/releases/download/v$GRAILS_VERSIO
 # Setup Grails path.
 ENV GRAILS_HOME /usr/lib/jvm/grails
 ENV PATH $GRAILS_HOME/bin:$PATH
+ENV GRADLE_HOME /usr/local/gradle
+ENV PATH ${PATH}:${GRADLE_HOME}/bin
 
-# Clean up APT.
+#Install Gradle
+WORKDIR /usr/local
+RUN wget  https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip && \
+    unzip gradle-$GRADLE_VERSION-bin.zip && \
+    rm -f gradle-$GRADLE_VERSION-bin.zip && \
+    ln -s gradle-$GRADLE_VERSION gradle
+
+# Clean up APK.
 RUN rm /var/cache/apk/*
 
 VOLUME ["/app"]
