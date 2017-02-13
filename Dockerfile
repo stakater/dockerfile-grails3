@@ -21,7 +21,7 @@ RUN wget https://github.com/grails/grails-core/releases/download/v$GRAILS_VERSIO
 ENV GRAILS_HOME /usr/lib/jvm/grails
 ENV PATH $GRAILS_HOME/bin:$PATH
 ENV GRADLE_HOME /usr/local/gradle
-ENV GRADLE_USER_HOME /app/.gradle
+ENV GRADLE_USER_HOME /root/.gradle
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
 
 #Install Gradle
